@@ -1,3 +1,4 @@
-const maxIDLength = 24;
+//12bytes = 24character Hexadecimal for Mongo object id
+const dbIDLength = 24;
 
-module.exports = maxIDLength;
+module.exports = dbIDLength;
