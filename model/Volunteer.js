@@ -18,7 +18,15 @@ const volunteerSchema = new Schema({
         to: {
             type: String
         }
-    }] 
+    }],
+    email: {
+        type: String,
+        required: true
+    } ,
+    phone:{
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Volunteer', volunteerSchema);
