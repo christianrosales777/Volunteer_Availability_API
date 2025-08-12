@@ -3,10 +3,22 @@ const Schema = mongoose.Schema;
 
 
 const volunteerSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    campus: String,
-    availability: [String]
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    }, 
+    availability: [{
+        from: {
+            type: String
+        },
+        to: {
+            type: String
+        }
+    }] 
 })
 
 module.exports = mongoose.model('Volunteer', volunteerSchema);
