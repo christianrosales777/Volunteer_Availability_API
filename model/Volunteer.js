@@ -8,3 +8,5 @@ const volunteerSchema = new Schema({
     campus: String,
     availability: [String]
 })
+
+module.exports = mongoose.model('Volunteer', volunteerSchema);
