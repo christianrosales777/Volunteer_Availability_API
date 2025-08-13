@@ -5,8 +5,8 @@ This application utilizes mongoDB to creates endpoints to:
     Update/add to an existing volunteer's available time slots (/volunteers)  
 
 ## Tech Stack
-Nodejs (22.18.0)Runtime environment  
-npm (10.9.3) Node Package Manager  
+* Nodejs* (22.18.0)Runtime environment  
+* npm (10.9.3) Node Package Manager  
    * date-fns (4.1.0) Used tocompared if a date comes early/after & for logging format  
    * dotenv (17.2.1) Stores .env package to be used with process
    * express: (5.1.0) Unopinionated minimalist web framework
@@ -14,9 +14,9 @@ npm (10.9.3) Node Package Manager
    * mongoose: (8.17.1) Object Data Model for MongoDB
    * slot-calculator: (2.2.1) Calculated time slots of open/close allowing a large format style
    * uuid: (11.1.0) Unique identifier for req/err logs  
-MongoDB Document database that has scalability and flexibility  
-Docker (28.3.2) Platform that help shares containers/images for others to run applications  
-Docker Compase (2.38.2) Tool that defines and runs multiple containers linking them  
+* MongoDB Document database that has scalability and flexibility  
+* Docker (28.3.2) Platform that help shares containers/images for others to run applications  
+* Docker Compase (2.38.2) Tool that defines and runs multiple containers linking them  
 
 
 ### Instructions for Setup:
