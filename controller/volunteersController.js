@@ -2,6 +2,7 @@ const getSlots = require('slot-calculator');
 const {DateTime, Settings} = require('luxon');
 const {dbIDLength, fromStart, toEnd, mIntervals} = require('../config/dbIDLength');
 const Volunteer = require('../model/Volunteer');
+const compareAsc = require('date-fns');
 Settings.defaultZone = 'UTC';
 
 //Iterates to obtained available time slots from Mongo
@@ -37,6 +38,12 @@ let avails = [];
     if(req.body.i > volunteer.availability.length - 1 || req.body.i < 0){
         return res.status(400).json({'message': 'i: index parameter must be within bounds of current availability.'})
     }
+    
+    //Checks if from:date comes before to:date
+    if(compareAsc.compareAsc(req.body.from, req.body.to) !== -1){
+        return res.status(400).json({'message': `Start date, from: ${req.body.from} has to come after the end date, to: ${req.body.to}`})
+    }
+    
     if(req.body?.from) volunteer.availability[req.body.i].from = req.body.from;
     if(req.body?.to) volunteer.availability[req.body.i].to = req.body.to;
     const result = await volunteer.save();
@@ -49,7 +56,6 @@ const getVolunteerAvailability = async (req, res) => {
     if (!volunteer) {
         return res.status(204).json({ 'message': `No volunteer matches the ID${req.body.id}` })
     }
-
     res.json(volunteerSlots(volunteer));
 }
 
