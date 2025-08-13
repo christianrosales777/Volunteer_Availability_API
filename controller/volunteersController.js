@@ -1,5 +1,5 @@
 const getSlots = require('slot-calculator');
-const {DateTime, Settings} = require('luxon');
+const {Settings} = require('luxon');
 const {dbIDLength, fromStart, toEnd, mIntervals} = require('../config/dbIDLength');
 const Volunteer = require('../model/Volunteer');
 const compareAsc = require('date-fns');
@@ -22,6 +22,7 @@ let avails = [];
     return avails;
 }
 
+
  const updateVolunteerAvailability = async (req, res) =>{
     if(!req?.body?.id){
         return res.status(400).json({'message': 'ID parameter is required.'});
@@ -35,8 +36,8 @@ let avails = [];
     if (!volunteer){
         return res.status(204).json({'message': `No volunteer matches the ID ${req.body.id}`});
     }
-    if(req.body.i > volunteer.availability.length - 1 || req.body.i < 0){
-        return res.status(400).json({'message': 'i: index parameter must be within bounds of current availability.'})
+    if(req.body.i > volunteer.availability.length || req.body.i < 0){
+        return res.status(400).json({'message': 'i: index parameter must be within bounds of current availability or one above.'})
     }
     
     //Checks if from:date comes before to:date
@@ -44,10 +45,25 @@ let avails = [];
         return res.status(400).json({'message': `Start date, from: ${req.body.from} has to come after the end date, to: ${req.body.to}`})
     }
     
-    if(req.body?.from) volunteer.availability[req.body.i].from = req.body.from;
-    if(req.body?.to) volunteer.availability[req.body.i].to = req.body.to;
-    const result = await volunteer.save();
-    res.json(result);
+    //Adds a new availability if the new index = the next index spot
+    if(req.body.i === volunteer.availability.length){
+        const result = await Volunteer.updateOne(
+            { _id: req.body.id },
+            { $push: { availability: { from: req.body.from, to: req.body.to } } }
+        );
+        res.json(result);
+    }
+    //Updates new availability into the old one.
+    else{
+        const updateFields = {};
+        if(req.body?.from) updateFields['availability.' + req.body.i + '.from'] = req.body.from;
+        if(req.body?.to) updateFields['availability.' + req.body.i + '.to'] = req.body.to;
+        const result = await Volunteer.updateOne(
+            { _id: req.body.id },
+            { $set: updateFields }
+        );
+        res.json(result);
+    }
     };
 
 const getVolunteerAvailability = async (req, res) => {
@@ -58,11 +74,6 @@ const getVolunteerAvailability = async (req, res) => {
     }
     res.json(volunteerSlots(volunteer));
 }
-
-
-
-
-
 
 module.exports = {
     updateVolunteerAvailability,
