@@ -15,6 +15,7 @@ app.use(logger);
 app.use(express.json());
 
 app.use('/volunteers', require('./routes/api/volunteer'));
+app.use('/campuses', require('./routes/api/campus'))
 
 app.use(errorHandler);
 
