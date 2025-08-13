@@ -1,6 +1,6 @@
 const getSlots = require('slot-calculator');
 const {Settings} = require('luxon');
-const {dbIDLength, fromStart, toEnd, mIntervals} = require('../config/dbIDLength');
+const {dbIDLength, fromStart, toEnd, mIntervals} = require('../config/dbConfigs');
 const Volunteer = require('../model/Volunteer');
 const compareAsc = require('date-fns');
 Settings.defaultZone = 'UTC';
