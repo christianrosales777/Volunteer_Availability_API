@@ -26,13 +26,13 @@ Docker Compase (2.38.2) Tool that defines and runs multiple containers linking t
 3. Have Docker (28.3.2) installed
 4. Have Docker Compose (v2.38.2) installed
 5. Clone the repository
-    a. `git clone https://github.com/christianrosales777/Volunteer_Availability_API`
+    1. `git clone https://github.com/christianrosales777/Volunteer_Availability_API`
 6. Build up docker image and run
-    a. `cd Volunteer_Availability_API`
-    b. `docker-compose up --build`
+    1. `cd Volunteer_Availability_API`
+    2. `docker-compose up --build`
 7. Make a request to one of the endpoints
-    a. If it includes updating/adding/getting a volunteer data, make sure to include the _id (example: 689b40aa5ee1db7fd7f07b10)
-    b. if it's to get all campuses the endpoint /campuses shall suffice
+    1. If it includes updating/adding/getting a volunteer data, make sure to include the _id (example: 689b40aa5ee1db7fd7f07b10)
+    2. if it's to get all campuses the endpoint /campuses shall suffice
 
 #### Description
 The application is currently set up to look at the current date through one month time in the future. This can be adjusted
