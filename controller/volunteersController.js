@@ -7,18 +7,22 @@ Settings.defaultZone = 'UTC';
 
 //Iterates to obtained available time slots from Mongo
 const volunteerSlots = (volunteer) => {
-let avails = [];
-    for(let i = 0; i < volunteer.availability.length; i++)
-    {
-      const { availableSlots } = getSlots.getSlots({
-        from: fromStart,
-        to: toEnd,
-        availability: [volunteer.availability[i]],
-        duration: mIntervals,
-    });
-    if (availableSlots != {}) avails.push(availableSlots) 
+    let avails = [];
+    for (let i = 0; i < volunteer.availability.length; i++) {
+        const { availableSlots } = getSlots.getSlots({
+            from: fromStart,
+            to: toEnd,
+            availability: [volunteer.availability[i]],
+            duration: mIntervals,
+        });
+        if (Array.isArray(availableSlots) && availableSlots.length > 0) {
+            availableSlots.forEach(slot => {
+                avails.push({
+                    ...slot
+                });
+            });
+        }
     }
-
     return avails;
 }
 
