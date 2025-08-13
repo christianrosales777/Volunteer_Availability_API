@@ -13,8 +13,8 @@ npm (10.9.3) Node Package Manager
    * luxon: (3.7.1) Allows setting of date time configuration and modifying time
    * mongoose: (8.17.1) Object Data Model for MongoDB
    * slot-calculator: (2.2.1) Calculated time slots of open/close allowing a large format style
-   * uuid: (11.1.0) Unique identifier for req/err logs
-MongoDB Document database that shas scalability and flexibility  
+   * uuid: (11.1.0) Unique identifier for req/err logs  
+MongoDB Document database that has scalability and flexibility  
 Docker (28.3.2) Platform that help shares containers/images for others to run applications  
 Docker Compase (2.38.2) Tool that defines and runs multiple containers linking them  
 
