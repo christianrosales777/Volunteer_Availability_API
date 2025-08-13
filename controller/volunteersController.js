@@ -1,6 +1,6 @@
 const getSlots = require('slot-calculator');
 const {DateTime, Settings} = require('luxon');
-const {dbIDLength, fromStart, toEnd} = require('../config/dbIDLength');
+const {dbIDLength, fromStart, toEnd, mIntervals} = require('../config/dbIDLength');
 const Volunteer = require('../model/Volunteer');
 Settings.defaultZone = 'UTC';
 
@@ -13,7 +13,7 @@ let avails = [];
         from: fromStart,
         to: toEnd,
         availability: [volunteer.availability[i]],
-        duration: 60,
+        duration: mIntervals,
     });
     if (availableSlots != {}) avails.push(availableSlots) 
     }

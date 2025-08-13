@@ -1,13 +1,14 @@
-import { getSlots } from "slot-calculator"
-import { DateTime, Settings } from "luxon";
-
+// import { getSlots } from "slot-calculator"
+// import { DateTime, Settings } from "luxon";
+const getSlots = require('slot-calculator');
+const {DateTime, Settings} = require('luxon');
 Settings.defaultZone = "UTC";
 
 // Obtain the current time passing in all but s & ms
 const dateTimeRef = DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute); 
 
 
-const {allSlots} = getSlots({
+const {allSlots} = getSlots.getSlots({
   from: dateTimeRef.toISO(),
   to: dateTimeRef.plus({ hour: 4 }).toISO(),
     // availability: [
@@ -30,4 +31,6 @@ const {allSlots} = getSlots({
 
 
 
-console.log(allSlots)
+console.log(allSlots);
+
+module.exports = allSlots
