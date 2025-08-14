@@ -9,16 +9,16 @@ services:
     environment:
       - MONGO_URI=mongodb+srv://Tester:JRgU7lDRDTwm4Mkt@volunteerapi-cluster.3bzusgi.mongodb.net/Elevation?retryWrites=true&w=majority&appName=VolunteerAPI-Cluster
       #Above should be inside of .env, but left here for demonstration purposes
-    depends_on:
-      - mongo
+#     depends_on:
+#       - mongo
 
-  mongo:
-    image: mongo:latest
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
+#   mongo:
+#     image: mongo:latest
+#     container_name: mongodb
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo-data:/data/db
 
-volumes:
-  mongo-data:
+# volumes:
+#   mongo-data: 
