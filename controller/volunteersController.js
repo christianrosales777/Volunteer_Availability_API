@@ -40,9 +40,6 @@ const volunteerSlots = (volunteer) => {
     if (!volunteer){
         return res.status(204).json({'message': `No volunteer matches the ID ${req.body.id}`});
     }
-    if(req.body.i > volunteer.availability.length || req.body.i < 0){
-        return res.status(400).json({'message': 'i: index parameter must be within bounds of current availability or one above.'})
-    }
     
     //Checks if from:date comes before to:date
     if(compareAsc.compareAsc(req.body.from, req.body.to) !== -1){
@@ -50,7 +47,7 @@ const volunteerSlots = (volunteer) => {
     }
     
     //Adds a new availability if the new index = the next index spot
-    if(req.body.i === volunteer.availability.length){
+    if(req.body.i >= volunteer.availability.length || req.body.i < 0){
         const result = await Volunteer.updateOne(
             { _id: req.body.id },
             { $push: { availability: { from: req.body.from, to: req.body.to } } }

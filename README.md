@@ -32,7 +32,7 @@ This application utilizes mongoDB to creates endpoints to:
 7. Make a request to one of the  (Examples)  
     1. Obtain Volunteer Avilability: `http://localhost:4567/volunteers/689b40aa5ee1db7fd7f07b10` or `http://localhost:4567/volunteers/689d385c005a314c4e80ef571`  
     2. Update/add Volunteer Availability: `http://localhost:4567/volunteers`
-    body: `{  "id": "689d385c005a314c4e80ef57","from": "2025-09-01T02:50:00.000Z","to": "2025-09-01T03:50:00.000Z","i": 5}`  To add have an index value higher than current availability.
+    body: `{  "id": "689d385c005a314c4e80ef57","from": "2025-09-01T02:50:00.000Z","to": "2025-09-01T03:50:00.000Z","i": 5}`  To add have an index value higher than current availability or a negitive value
     3. Obtained all campuses availability: `http://localhost:4567/campuses`  
 
 #### Description
