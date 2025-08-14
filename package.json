@@ -20,6 +20,8 @@
     "luxon": "^3.7.1",
     "mongoose": "^8.17.1",
     "slot-calculator": "^2.2.1",
-    "uuid": "^11.1.0"
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0",
+    "yaml": "^2.8.1"
   }
 }
