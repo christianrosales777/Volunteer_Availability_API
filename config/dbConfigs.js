@@ -10,7 +10,7 @@ const dateTimeRef = DateTime.utc(DateTime.now().year, DateTime.now().month, Date
 const fromStart = dateTimeRef.toISO();
 const toEnd = dateTimeRef.plus({month: 1} ).toISO();
 
-// //Interval of availability slots
+// //Interval of availability slots in minutes
 const mIntervals = 60;
 
 module.exports = {dbIDLength, fromStart, toEnd, mIntervals};
