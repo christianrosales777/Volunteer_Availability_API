@@ -40,6 +40,6 @@ through mInterval (in minutes). With that being how the code is designed, the ca
 availability will eventually pass their available dates and will need updated times of their next availability. This is due
 to all availability being empty, or unavailable, at all times unless specified. 
 
-#### Challenges Faced
+##### Challenges Faced
 One troubling occurance I kept running into while developing this, is that the luxon package and slots-calculator packages
 I was using was having trouble getting the exact "now" time. Luxon showed the correct now time converted into UTC but after I passed it into a slot-calculator function, it would list all times as unavailable even if specified it was avilable. To get around this, I created a "now" time that sets seconds and miliseconds to 0. To address this even better I could dive into the package slot-calculator and luxon to find the exact spot where this error is coming from to address it even better so that I can have the exact time currently.
