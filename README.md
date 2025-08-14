@@ -3,9 +3,9 @@ This application utilizes mongoDB to creates endpoints to:
 * get all availability of all campuses.                      (/campuses)  
    * Will return all start times: from, end time: to, and campuses names: campusName, and if they are available at those times: available.
 * get a volunteer's availability time frame                  (/volunteers/:id)  
-   * Will return all available time frames in the structure of from: ...  to:... avilable: true
+   * Will return all available time frames in the structure of from: ...  to: ... avilable: true
 * Update/add to an existing volunteer's available time slots (/volunteers)  
-   * Will check if the index i: provided is already inside of the volunteer's availability and if not it'll append it.
+   * Will check if the index i: provided is already inside of the volunteer's availability and if not it'll append the availability.
 ## Tech Stack
 * Nodejs: (22.18.0)Runtime environment  
 * npm (10.9.3): Node Package Manager  
@@ -18,6 +18,7 @@ This application utilizes mongoDB to creates endpoints to:
    * uuid: (11.1.0) Unique identifier for req/err logs
    * swagger-ui-express: (5.0.1) Serving Auto generated swagger-ui generated API Documentation
    * yaml: (2.8.1)  Definitive library for YAML that supports parsing of YAML documents
+   * cors: (2.8.5) Provides middleware to enable CORS
 * MongoDB Document database that has scalability and flexibility  
 * Docker (28.3.2) Platform that help shares containers/images for others to run applications  
 * Docker Compose (2.38.2) Tool that defines and runs multiple containers linking them  
@@ -31,8 +32,9 @@ This application utilizes mongoDB to creates endpoints to:
 5. Clone the repository
     1. `git clone https://github.com/christianrosales777/Volunteer_Availability_API`
 6. Build up docker image and run
-    1. `cd Volunteer_Availability_API`
-    2. `docker-compose up --build`
+    1. Make sure docker is open and running before running the code 
+    2. `cd Volunteer_Availability_API`
+    3. `docker-compose up --build`
 7. Make a request to one of the endpoints. Here are some examples. **This will require Thunder Client/Postman equivalent to send a json body OR use the Swagger api found at `http://localhost:4567/api-docs/`**
     1. Obtain Volunteer Avilability: `http://localhost:4567/volunteers/689b40aa5ee1db7fd7f07b10` or `http://localhost:4567/volunteers/689d385c005a314c4e80ef571`
     2. Update/add Volunteer Availability: `http://localhost:4567/volunteers`
