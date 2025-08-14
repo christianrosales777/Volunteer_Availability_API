@@ -39,7 +39,9 @@ const updateVolunteerAvailability = async (req, res) => {
     if (!volunteer) {
         return res.status(204).json({ 'message': `No volunteer matches the ID ${req.body.id}` });
     }
-
+    if(isNaN(Date.parse(req.body.from)) || isNaN(Date.parse(req.body.to))) {
+        return res.status(400).json({ 'message': 'Valid date for from: or to: parameters are required.' });
+    }
     //Checks if from:date comes before to:date
     if (compareAsc.compareAsc(req.body.from, req.body.to) !== -1) {
         return res.status(400).json({ 'message': `Start date, from: ${req.body.from} has to come after the end date, to: ${req.body.to}` })
