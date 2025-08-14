@@ -16,7 +16,7 @@ This application utilizes mongoDB to creates endpoints to:
    * uuid: (11.1.0) Unique identifier for req/err logs  
 * MongoDB Document database that has scalability and flexibility  
 * Docker (28.3.2) Platform that help shares containers/images for others to run applications  
-* Docker Compase (2.38.2) Tool that defines and runs multiple containers linking them  
+* Docker Compose (2.38.2) Tool that defines and runs multiple containers linking them  
 
 
 ### Instructions for Setup:
@@ -29,9 +29,11 @@ This application utilizes mongoDB to creates endpoints to:
 6. Build up docker image and run
     1. `cd Volunteer_Availability_API`
     2. `docker-compose up --build`
-7. Make a request to one of the endpoints
-    1. If it includes updating/adding/getting a volunteer data, make sure to include the _id (example: 689b40aa5ee1db7fd7f07b10)
-    2. if it's to get all campuses the endpoint /campuses shall suffice
+7. Make a request to one of the  (Examples)  
+    1. Obtain Volunteer Avilability: `http://localhost:4567/volunteers/689b40aa5ee1db7fd7f07b10` or `http://localhost:4567/volunteers/689d385c005a314c4e80ef571`  
+    2. Update/add Volunteer Availability: `http://localhost:4567/volunteers`
+    body: `{  "id": "689d385c005a314c4e80ef57","from": "2025-09-01T02:50:00.000Z","to": "2025-09-01T03:50:00.000Z","i": 5}`  To add have an index value higher than current availability.
+    3. Obtained all campuses availability: `http://localhost:4567/campuses`  
 
 #### Description
 The application is currently set up to look at the current date through one month time in the future. This can be adjusted
