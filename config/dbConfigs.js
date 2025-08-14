@@ -11,6 +11,6 @@ const fromStart = dateTimeRef.toISO();
 const toEnd = dateTimeRef.plus({month: 1} ).toISO();
 
 // //Interval of availability slots
-const mIntervals = 60 * 24;
+const mIntervals = 60;
 
 module.exports = {dbIDLength, fromStart, toEnd, mIntervals};
