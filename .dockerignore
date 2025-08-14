@@ -9,4 +9,3 @@ lerna-debug.log*
 .git
 .dockerignore
 .gitignore
-DockerFile
