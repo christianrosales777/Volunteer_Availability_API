@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () =>{
     try{
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect('mongodb://host.docker.internal:27017/Elevation');
     }catch(e){
         console.error(e);
     }
