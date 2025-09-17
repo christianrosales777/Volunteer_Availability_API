@@ -44,7 +44,7 @@ const updateVolunteerAvailability = async (req, res) => {
     }
     //Checks if from:date comes before to:date
     if (compareAsc.compareAsc(req.body.from, req.body.to) !== -1) {
-        return res.status(400).json({ 'message': `Start date, from: ${req.body.from} has to come after the end date, to: ${req.body.to}` })
+        return res.status(400).json({ 'message': `Start date, from: ${req.body.from} has to come before the end date, to: ${req.body.to}` })
     }
 
     //Adds a new availability if the new index = the next index spot

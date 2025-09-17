@@ -37,12 +37,10 @@ paths:
                   format: date-time
                   description: End time of availability
       responses:
-        '200':
-          description: Availability updated successfully
         '400':
           description: Invalid input data
         '204':
-          description: No volunteer found with the given ID
+          description: Availability Updated Successfully
 
   /volunteers/{id}:
     get:
