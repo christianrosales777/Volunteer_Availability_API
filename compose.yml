@@ -8,8 +8,6 @@ services:
       - /app/node_modules
     environment:
       - MONGO_URI=mongodb://host.docker.internal:27017/Elevation
-      # MONGO_URI=mongodb+srv://Tester:JRgU7lDRDTwm4Mkt@volunteerapi-cluster.3bzusgi.mongodb.net/Elevation?retryWrites=true&w=majority&appName=VolunteerAPI-Cluster
-      #Above should be inside of .env, but left here for demonstration purposes
     depends_on:
       - mongo
 
